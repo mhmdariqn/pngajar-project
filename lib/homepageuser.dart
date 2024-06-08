@@ -1,3 +1,5 @@
+import 'package:pngajar/chatuser.dart';
+
 import 'profil.dart';
 import 'usercourse.dart';
 import 'package:flutter/material.dart';
@@ -275,58 +277,62 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(
-                          Icons.arrow_right_outlined), // Icon notifikasi
+                      icon: const Icon(Icons
+                          .keyboard_arrow_right_rounded), // Icon notifikasi
                       onPressed: () {},
                     ),
                   ],
                 ),
               ),
-              GroupItem(
-                imagePath: 'images/image1.png',
-                groupName: "DATA ANALYSIS Group’s",
-                participants: '12 Peserta',
-                onTap: () {
-                  // Aksi saat container diklik
-                },
-              ),
-              const SizedBox(height: 5),
-              GroupItem(
-                imagePath: 'images/image2.png',
-                groupName: "PROYEK 1 Group’s",
-                participants: '12 Peserta',
-                onTap: () {
-                  // Aksi saat container diklik
-                },
-              ),
-              const SizedBox(height: 5),
-              GroupItem(
-                imagePath: 'images/image6.png',
-                groupName: "Java's Group’s",
-                participants: '12 Peserta',
-                onTap: () {
-                  // Aksi saat container diklik
-                },
-              ),
-              GroupItem(
-                imagePath: 'images/image5.png',
-                groupName: "ALGORITHM Group’s",
-                participants: '12 Peserta',
-                onTap: () {
-                  // Aksi saat container diklik
-                },
-              ),
-              const SizedBox(height: 10),
-              GroupItem(
-                imagePath: 'images/image4.png',
-                groupName: "UI/UX Group’s",
-                participants: '12 Peserta',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => GroupClicked5()),
-                  );
-                },
+              ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  GroupItem(
+                    imagePath: 'images/image1.png',
+                    groupName: "DATA ANALYSIS Group’s",
+                    participants: '12 Peserta',
+                    onTap: () {
+                      // Aksi saat container diklik
+                    },
+                  ),
+                  GroupItem(
+                    imagePath: 'images/image2.png',
+                    groupName: "PROYEK 1 Group’s",
+                    participants: '12 Peserta',
+                    onTap: () {
+                      // Aksi saat container diklik
+                    },
+                  ),
+                  GroupItem(
+                    imagePath: 'images/image6.png',
+                    groupName: "Java's Group’s",
+                    participants: '12 Peserta',
+                    onTap: () {
+                      // Aksi saat container diklik
+                    },
+                  ),
+                  GroupItem(
+                    imagePath: 'images/image5.png',
+                    groupName: "ALGORITHM Group’s",
+                    participants: '12 Peserta',
+                    onTap: () {
+                      // Aksi saat container diklik
+                    },
+                  ),
+                  GroupItem(
+                    imagePath: 'images/image4.png',
+                    groupName: "UI/UX Group’s",
+                    participants: '12 Peserta',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GroupClicked5()),
+                      );
+                    },
+                  ),
+                ],
               ),
               const SizedBox(height: 10),
             ],
@@ -354,42 +360,80 @@ class GroupItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 30, right: 29, top: 12),
+      child: Center(
         child: Container(
-          padding: const EdgeInsets.all(10),
+          margin: EdgeInsets.symmetric(vertical: 5),
+          height: 75,
+          width: 328,
           decoration: BoxDecoration(
-            color: const Color.fromRGBO(239, 242, 250, 1),
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: Row(
-            children: [
-              Image.asset(
-                imagePath,
-                width: 48,
-                height: 48,
+            color: Color.fromARGB(255, 255, 255, 255),
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 0,
+                blurRadius: 10,
+                offset: Offset(3, 20),
               ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    groupName,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontFamily: "Sora",
-                      fontWeight: FontWeight.bold,
-                    ),
+            ],
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                left: 12,
+                top: 10,
+                child: Image.asset(
+                  imagePath,
+                  width: 58,
+                  height: 57,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 78, top: 23),
+                child: Text(
+                  groupName,
+                  style: TextStyle(
+                    fontFamily: "Sora",
+                    height: 1.0,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 0, 0, 0),
                   ),
-                  Text(
-                    participants,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontFamily: "Sora",
-                      color: Colors.black,
-                    ),
+                ),
+              ),
+              Positioned(
+                left: 78,
+                top: 23,
+                child: Text(
+                  groupName,
+                  style: TextStyle(
+                    fontFamily: "Sora",
+                    height: 1.0,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 0, 0, 0),
                   ),
-                ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 78, top: 40),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.people_alt_outlined,
+                      color: Color(0xFF3158DA),
+                      size: 10.0,
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      participants,
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -409,14 +453,7 @@ class CoursesScreen extends StatelessWidget {
 class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(
-          'Chat Screen',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
+    return ChatUser();
   }
 }
 

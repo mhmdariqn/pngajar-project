@@ -74,6 +74,7 @@ flutter:
     - images/kelashpo.png
     - images/kelasreduksi.png
     - images/kelasuiux.png
+    - images/johnatan.png
 
   #An image asset can refer to one or more resolution-specific "variants", see
   #https://flutter.dev/assets-and-images/#resolution-aware

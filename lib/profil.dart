@@ -1,20 +1,5 @@
-import 'package:pngajar/uiuxgrup.dart';
-import 'package:pngajar/bannerclicked1.dart';
 import 'package:flutter/material.dart';
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: BottomNavigation(),
-//     );
-//   }
-// }
-
-// class BottomNavigation extends StatefulWidget {
-//   @override
-//   _BottomNavigationState createState() => _BottomNavigationState();
-// }
+import 'package:pngajar/login.dart';
 
 class CategoryButton extends StatelessWidget {
   final String text;
@@ -56,153 +41,30 @@ class _ProfilPageUserState extends State<ProfilPageUser> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
-              ),
-              const Padding(
-                padding: EdgeInsets.only(
-                    left: 29,
-                    right: 30,
-                    top: 5), // Padding untuk jarak dari atas
-                child: Text(
-                  'Hai John,',
-                  style:
-                      TextStyle(fontSize: 12, fontFamily: "Sora", height: 2.0),
-                ),
-              ),
+              const SizedBox(height: 70),
               Padding(
                 padding: const EdgeInsets.only(left: 29, right: 30, top: 2),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Nikmati proses belajar !',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Sora",
-                          height: 2.0,
-                          fontWeight: FontWeight.bold),
-                    ),
                     IconButton(
-                      icon: const Icon(Icons
-                          .notifications), // Icon notifikasi (ganti dengan icon yang sesuai)
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(left: 29, right: 30, top: 1),
-                child: TextField(
-                  decoration: InputDecoration(
-                    fillColor: Colors.grey[200], // Warna latar belakang
-                    filled: true, // Aktifkan latar belakang yang diisi
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          14), // Menambahkan border radius
-                      borderSide: BorderSide.none, //Menghilangkan outline
-                    ),
-                    suffixIcon: IconButton(
-                      icon: const Icon(
-                        Icons
-                            .search, // Ikonya bisa berupa Icons.visibility atau Icons.visibility_off
-                        color: Color(
-                            0xFF3158DA), // Sesuaikan dengan warna ikon yang diinginkan
+                      icon: Container(
+                        decoration: const BoxDecoration(
+                          color:
+                              Color.fromRGBO(237, 176, 196, 1), // Warna abu-abu
+                          shape: BoxShape.circle, // Bentuk bulat
+                        ),
+                        padding: const EdgeInsets.all(
+                            0), // Menambahkan padding untuk ikon
+                        child: Image.asset(
+                          'images/johnatan.png',
+                          fit: BoxFit
+                              .cover, // Membuat gambar menutupi seluruh area
+                        ),
                       ),
-                      onPressed: () {},
-                    ),
-                    hintText: 'Cari..',
-                    hintStyle: const TextStyle(color: Colors.grey),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 19, right: 19, top: 12),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'images/banner1.png',
-                      width: 318, // Sesuaikan dengan ukuran yang diinginkan
-                      height: 160,
-                    ),
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 29, right: 30, top: 2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Popular Courses',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Sora",
-                          height: 2.0,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 29, top: 1),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    const Text(
-                      'Semua',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "Sora",
-                        height: 2.0,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF3158DA),
-                      ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons
-                          .arrow_right_outlined), // Icon notifikasi (ganti dengan icon yang sesuai)
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 29, right: 30, top: 8),
-                child: SizedBox(
-                  height: 50,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: const [
-                      SizedBox(width: 10), // Spasi awal
-                      CategoryButton(text: 'Graphic Design'),
-                      SizedBox(width: 10),
-                      CategoryButton(text: 'Matematika'),
-                      SizedBox(width: 10),
-                      CategoryButton(text: 'Ilmu Data'),
-                      SizedBox(width: 10), // Spasi akhir
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 29, right: 30, top: 12),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BannerClicked1()),
-                        );
+                      onPressed: () {
+                        // Aksi saat ikon ditekan
                       },
-                      child: Image.asset(
-                        'images/banner2.png',
-                        width: 280, // Sesuaikan dengan ukuran yang diinginkan
-                        height: 273,
-                      ),
                     ),
                   ],
                 ),
@@ -210,10 +72,10 @@ class _ProfilPageUserState extends State<ProfilPageUser> {
               const Padding(
                 padding: EdgeInsets.only(left: 29, right: 30, top: 2),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Featured study groups',
+                      'Johnatan',
                       style: TextStyle(
                           fontSize: 18,
                           fontFamily: "Sora",
@@ -223,98 +85,25 @@ class _ProfilPageUserState extends State<ProfilPageUser> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 29, top: 1),
+              const Padding(
+                padding: EdgeInsets.only(left: 29, right: 30, top: 2),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Semua',
+                    Text(
+                      'D3 Sistem Informasi',
                       style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "Sora",
-                        height: 2.0,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF3158DA),
-                      ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons
-                          .arrow_right_outlined), // Icon notifikasi (ganti dengan icon yang sesuai)
-                      onPressed: () {},
+                          fontSize: 14,
+                          fontFamily: "Sora",
+                          color: Colors.grey,
+                          height: 2.0,
+                          fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
               ),
-              //Kelompok Belajar
-              GestureDetector(
-                onTap: () {
-                  // Aksi yang akan dilakukan saat Container diklik
-                },
-                child: Center(
-                  child: Container(
-                    height: 75,
-                    width: 328,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2), // Warna bayangan
-                          spreadRadius: 0, // Radius penyebaran
-                          blurRadius: 10, // Radius blur
-                          offset: const Offset(3,
-                              20), // Offset bayangan, misalnya (3,3) untuk bayangan ke kanan bawah
-                        ),
-                      ],
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 32,
-                          top: 10,
-                          child: Row(
-                            children: <Widget>[
-                              Image.asset(
-                                  width:
-                                      58, // Sesuaikan dengan ukuran yang diinginkan
-                                  height: 57,
-                                  'images/image1.png')
-                            ],
-                          ),
-                        ),
-                        const Positioned(
-                          left: 98,
-                          top: 25,
-                          child: Text(
-                            "DATA ANALYSIS Group’s",
-                            style: TextStyle(
-                              fontFamily: "Sora",
-                              height: 1.0,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ),
-                        ),
-                        const Positioned(
-                          left: 98,
-                          top: 40,
-                          child: Text(
-                            '12 Peserta',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
               const SizedBox(
-                height: 5,
+                height: 31,
               ),
               GestureDetector(
                 onTap: () {
@@ -322,197 +111,62 @@ class _ProfilPageUserState extends State<ProfilPageUser> {
                 },
                 child: Center(
                   child: Container(
-                    height: 75,
+                    height: 52,
                     width: 328,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 255, 255, 255),
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.2), // Warna bayangan
+                          color:
+                              Colors.grey.withOpacity(0.09), // Warna bayangan
                           spreadRadius: 0, // Radius penyebaran
                           blurRadius: 10, // Radius blur
-                          offset: const Offset(3,
+                          offset: const Offset(1,
                               20), // Offset bayangan, misalnya (3,3) untuk bayangan ke kanan bawah
                         ),
                       ],
                     ),
-                    child: Stack(
+                    child: const Stack(
                       children: [
                         Positioned(
                           left: 32,
                           top: 10,
                           child: Row(
-                            children: <Widget>[
-                              Image.asset(
-                                  width:
-                                      58, // Sesuaikan dengan ukuran yang diinginkan
-                                  height: 57,
-                                  'images/image2.png')
+                            children: [
+                              Icon(
+                                Icons.person_2_outlined,
+                                color: Color(0xFF3158DA),
+                                size: 34.0,
+                              ),
                             ],
                           ),
                         ),
-                        const Positioned(
-                          left: 98,
-                          top: 25,
+                        Positioned(
+                          left: 83,
+                          top: 21,
                           child: Text(
-                            "PROYEK 1 Group’s",
+                            "Akun",
                             style: TextStyle(
                               fontFamily: "Sora",
                               height: 1.0,
-                              fontSize: 12,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 0, 0, 0),
                             ),
                           ),
                         ),
-                        const Positioned(
-                          left: 98,
-                          top: 40,
-                          child: Text(
-                            '12 Peserta',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Aksi yang akan dilakukan saat Container diklik
-                },
-                child: Center(
-                  child: Container(
-                    height: 75,
-                    width: 328,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2), // Warna bayangan
-                          spreadRadius: 0, // Radius penyebaran
-                          blurRadius: 10, // Radius blur
-                          offset: const Offset(3,
-                              20), // Offset bayangan, misalnya (3,3) untuk bayangan ke kanan bawah
-                        ),
-                      ],
-                    ),
-                    child: Stack(
-                      children: [
                         Positioned(
-                          left: 32,
+                          right: 32,
                           top: 10,
                           child: Row(
-                            children: <Widget>[
-                              Image.asset(
-                                  width:
-                                      58, // Sesuaikan dengan ukuran yang diinginkan
-                                  height: 57,
-                                  'images/image6.png')
+                            children: [
+                              Icon(
+                                Icons.keyboard_arrow_right_rounded,
+                                color: Color(0xFF3158DA),
+                                size: 34.0,
+                              ),
                             ],
-                          ),
-                        ),
-                        const Positioned(
-                          left: 98,
-                          top: 25,
-                          child: Text(
-                            "Java's Group’s",
-                            style: TextStyle(
-                              fontFamily: "Sora",
-                              height: 1.0,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ),
-                        ),
-                        const Positioned(
-                          left: 98,
-                          top: 40,
-                          child: Text(
-                            '12 Peserta',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Aksi yang akan dilakukan saat Container diklik
-                },
-                child: Center(
-                  child: Container(
-                    height: 75,
-                    width: 328,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2), // Warna bayangan
-                          spreadRadius: 0, // Radius penyebaran
-                          blurRadius: 10, // Radius blur
-                          offset: const Offset(3,
-                              20), // Offset bayangan, misalnya (3,3) untuk bayangan ke kanan bawah
-                        ),
-                      ],
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 32,
-                          top: 10,
-                          child: Row(
-                            children: <Widget>[
-                              Image.asset(
-                                  width:
-                                      58, // Sesuaikan dengan ukuran yang diinginkan
-                                  height: 57,
-                                  'images/image5.png')
-                            ],
-                          ),
-                        ),
-                        const Positioned(
-                          left: 98,
-                          top: 25,
-                          child: Text(
-                            "ALGORITHM Group’s",
-                            style: TextStyle(
-                              fontFamily: "Sora",
-                              height: 1.0,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ),
-                        ),
-                        const Positioned(
-                          left: 98,
-                          top: 40,
-                          child: Text(
-                            '12 Peserta',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
                           ),
                         ),
                       ],
@@ -527,133 +181,67 @@ class _ProfilPageUserState extends State<ProfilPageUser> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => GroupClicked5()),
+                    MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
                 child: Center(
                   child: Container(
-                    height: 75,
+                    height: 52,
                     width: 328,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 255, 255, 255),
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.2), // Warna bayangan
+                          color:
+                              Colors.grey.withOpacity(0.09), // Warna bayangan
                           spreadRadius: 0, // Radius penyebaran
                           blurRadius: 10, // Radius blur
-                          offset: const Offset(3,
+                          offset: const Offset(1,
                               20), // Offset bayangan, misalnya (3,3) untuk bayangan ke kanan bawah
                         ),
                       ],
                     ),
-                    child: Stack(
+                    child: const Stack(
                       children: [
                         Positioned(
                           left: 32,
                           top: 10,
                           child: Row(
-                            children: <Widget>[
-                              Image.asset(
-                                  width:
-                                      58, // Sesuaikan dengan ukuran yang diinginkan
-                                  height: 57,
-                                  'images/image4.png')
+                            children: [
+                              Icon(
+                                Icons.logout_rounded,
+                                color: Color(0xFF3158DA),
+                                size: 34.0,
+                              ),
                             ],
                           ),
                         ),
-                        const Positioned(
-                          left: 98,
-                          top: 25,
+                        Positioned(
+                          left: 83,
+                          top: 21,
                           child: Text(
-                            "UI/UX Group’s",
+                            "Keluar",
                             style: TextStyle(
                               fontFamily: "Sora",
                               height: 1.0,
-                              fontSize: 12,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 0, 0, 0),
                             ),
                           ),
                         ),
-                        const Positioned(
-                          left: 98,
-                          top: 40,
-                          child: Text(
-                            '12 Peserta',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Aksi yang akan dilakukan saat Container diklik
-                },
-                child: Center(
-                  child: Container(
-                    height: 75,
-                    width: 328,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2), // Warna bayangan
-                          spreadRadius: 0, // Radius penyebaran
-                          blurRadius: 10, // Radius blur
-                          offset: const Offset(3,
-                              20), // Offset bayangan, misalnya (3,3) untuk bayangan ke kanan bawah
-                        ),
-                      ],
-                    ),
-                    child: Stack(
-                      children: [
                         Positioned(
-                          left: 32,
+                          right: 32,
                           top: 10,
                           child: Row(
-                            children: <Widget>[
-                              Image.asset(
-                                  width:
-                                      58, // Sesuaikan dengan ukuran yang diinginkan
-                                  height: 57,
-                                  'images/image3.png')
+                            children: [
+                              Icon(
+                                Icons.keyboard_arrow_right_rounded,
+                                color: Color(0xFF3158DA),
+                                size: 34.0,
+                              ),
                             ],
-                          ),
-                        ),
-                        const Positioned(
-                          left: 98,
-                          top: 25,
-                          child: Text(
-                            "FRONT END Group’s",
-                            style: TextStyle(
-                              fontFamily: "Sora",
-                              height: 1.0,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ),
-                        ),
-                        const Positioned(
-                          left: 98,
-                          top: 40,
-                          child: Text(
-                            '12 Peserta',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
                           ),
                         ),
                       ],
