@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pngajar/daftarkelompokbelajar.dart';
 
-class MateriPage extends StatelessWidget {
+class FormGroups extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +12,7 @@ class MateriPage extends StatelessWidget {
                 width:
                     8.0), // Beri sedikit jarak dari tombol back ke heading "Materi"
             Text(
-              'Materi',
+              'Kelompok Belajar',
               textAlign: TextAlign.start, // Menjadikan teks "Materi" ke kiri
             ),
           ],
@@ -24,85 +25,79 @@ class MateriPage extends StatelessWidget {
           children: [
             // Tahapan
             _StepBar(activeStep: 1), // Menandai langkah pertama sebagai aktif
-            SizedBox(
-                height:
-                    16.0), // Beri sedikit jarak dari tahapan ke judul materi
-            // Judul Materi
-            Text(
-              'Judul Materi',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sora',
-              ),
-            ),
-            SizedBox(height: 8.0),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Contoh: Dasar Manajemen proyek',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide.none,
+            Padding(
+              padding: const EdgeInsets.only(left: 25, right: 30, top: 5),
+              child: const Text(
+                'Nama Kelompok',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(255, 0, 0, 0),
                 ),
-                filled: true,
-                fillColor: Colors.grey[200],
-              ),
-              style: TextStyle(
-                fontSize: 14.0,
-                fontFamily: 'Sora',
               ),
             ),
-            SizedBox(height: 16.0),
-            // Mata Kuliah
-            Text(
-              'Mata Kuliah',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sora',
-              ),
-            ),
-            SizedBox(height: 4.0),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Contoh: Proyek 1',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide.none,
+            SizedBox(height: 10),
+            Center(
+              child: Container(
+                width: 350, // Sesuaikan lebar sesuai kebutuhan
+                height: 70, // Tinggi TextField sesuai kebutuhan
+                child: TextField(
+                  maxLines:
+                      null, // Membuat TextField bisa memiliki banyak baris
+                  expands:
+                      true, // Memastikan TextField mengisi seluruh tinggi Container
+                  textAlignVertical: TextAlignVertical
+                      .top, // Memastikan teks dimulai dari atas
+                  decoration: InputDecoration(
+                    fillColor: Colors.grey[200], // Warna latar belakang
+                    filled: true, // Aktifkan latar belakang yang diisi
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          14), // Menambahkan border radius
+                      borderSide: BorderSide.none, // Menghilangkan outline
+                    ),
+                    hintText: 'Nama Kelompok Belajar',
+                    hintStyle: TextStyle(color: Colors.grey),
+                  ),
                 ),
-                filled: true,
-                fillColor: Colors.grey[200],
-              ),
-              style: TextStyle(
-                fontSize: 14.0,
-                fontFamily: 'Sora',
               ),
             ),
-            SizedBox(height: 16.0),
-            // Deskripsi
-            Text(
-              'Deskripsi',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Sora',
-              ),
-            ),
-            SizedBox(height: 4.0),
-            TextFormField(
-              maxLines: 5,
-              decoration: InputDecoration(
-                hintText: 'Masukkan deskripsi materi di sini',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide.none,
+            SizedBox(height: 21),
+            Padding(
+              padding: const EdgeInsets.only(left: 25, right: 30, top: 5),
+              child: const Text(
+                'Alasan',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(255, 0, 0, 0),
                 ),
-                filled: true,
-                fillColor: Colors.grey[200],
               ),
-              style: TextStyle(
-                fontSize: 14.0,
-                fontFamily: 'Sora',
+            ),
+            SizedBox(height: 10),
+            Center(
+              child: Container(
+                width: 350, // Sesuaikan lebar sesuai kebutuhan
+                height: 246, // Tinggi TextField sesuai kebutuhan
+                child: TextField(
+                  maxLines:
+                      null, // Membuat TextField bisa memiliki banyak baris
+                  expands:
+                      true, // Memastikan TextField mengisi seluruh tinggi Container
+                  textAlignVertical: TextAlignVertical
+                      .top, // Memastikan teks dimulai dari atas
+                  decoration: InputDecoration(
+                    fillColor: Colors.grey[200], // Warna latar belakang
+                    filled: true, // Aktifkan latar belakang yang diisi
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          14), // Menambahkan border radius
+                      borderSide: BorderSide.none, // Menghilangkan outline
+                    ),
+                    hintText: 'Alasan Anda',
+                    hintStyle: TextStyle(color: Colors.grey),
+                  ),
+                ),
               ),
             ),
             SizedBox(height: 16.0),
@@ -121,6 +116,12 @@ class MateriPage extends StatelessWidget {
                       );
                     },
                     style: ElevatedButton.styleFrom(
+                      minimumSize: Size(
+                        MediaQuery.of(context).size.width *
+                            0.8, // Lebar minimum tombol
+                        MediaQuery.of(context).size.height *
+                            0.05, // Tinggi minimum tombol
+                      ),
                       backgroundColor: Color(
                           0xFF3158DA), // Warna latar belakang tombol (3158DA)
                     ),
@@ -214,7 +215,7 @@ class ScreenTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Materi'),
+        title: Text('Kelompok Belajar'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -263,7 +264,7 @@ class ScreenThree extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Materi'),
+        title: Text('Kelompok Belajar'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -307,7 +308,7 @@ class ScreenThree extends StatelessWidget {
                   ),
                   SizedBox(height: 8.0), // Jarak antara teks dan deskripsi
                   Text(
-                    'Materi yang Anda tambahkan sukses untuk ditambahkan pada daftar kelas.',
+                    'Kelompok belajar yang Anda tambahkan sukses untuk ditambahkan pada daftar kelas.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14.0,
@@ -326,7 +327,11 @@ class ScreenThree extends StatelessWidget {
                     SizedBox()), // Memberikan ruang kosong agar tombol "Lihat Daftar Materi" ditempatkan di bagian bawah
             ElevatedButton(
               onPressed: () {
-                // Tambahkan aksi saat tombol "Lihat Daftar Materi" ditekan
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DaftarKelompokBelajar()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor:
@@ -335,7 +340,7 @@ class ScreenThree extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
-                  'Lihat Daftar Materi',
+                  'Lihat Daftar Kelompok Belajar',
                   style: TextStyle(
                     fontSize: 16.0,
                     fontFamily: 'Sora',
@@ -347,6 +352,7 @@ class ScreenThree extends StatelessWidget {
           ],
         ),
       ),
+      
     );
   }
 }
