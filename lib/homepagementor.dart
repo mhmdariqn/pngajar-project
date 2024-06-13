@@ -1,10 +1,11 @@
 import 'package:flutter/widgets.dart';
-import 'package:pngajar/chatuser.dart';
+import 'package:pngajar/chatmentor.dart';
+import 'package:pngajar/daftarkelasmentor.dart';
 import 'profiladmin.dart';
 import 'package:flutter/material.dart';
 import 'package:pngajar/notifadmin.dart';
-import 'package:pngajar/formkelompokbelajar.dart';
 import 'package:pngajar/ajuiklanadmin.dart';
+import 'formkelas.dart';
 
 class CategoryButton extends StatelessWidget {
   final String text;
@@ -158,7 +159,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DaftarKelas()),
+                        );
+                      },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -222,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => FormGroups()),
+                          MaterialPageRoute(builder: (context) => FormKelas()),
                         );
                       },
                       child: Text(
@@ -481,7 +488,10 @@ class _GroupItemState extends State<GroupItem> {
 class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChatUser();
+    return ChatMentor(
+      mentorName: 'Jane Cooper', // Ganti dengan nama mentor
+      mentorImage: 'path_to_mentor_image',
+    );
   }
 }
 

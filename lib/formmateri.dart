@@ -1,18 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:pngajar/materimentor.dart';
 
-class MateriPage extends StatelessWidget {
+class FormMateri extends StatelessWidget {
+  final TextEditingController judulMateriController = TextEditingController();
+  final TextEditingController matkulController = TextEditingController();
+  final TextEditingController deskripsiController = TextEditingController();
+
+  Future<void> _submitForm(BuildContext context) async {
+    final response = await http.post(
+      Uri.parse('http://172.20.10.3/pngajarphp/upmateri/materi_form.php'),
+      body: {
+        'judulmateri': judulMateriController.text,
+        'matkul': matkulController.text,
+        'deskripsimtr': deskripsiController.text,
+      },
+    );
+
+    final responseData = json.decode(response.body);
+    if (responseData['pesan'] == 'Sukses') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MateriMentor(),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Gagal menyimpan data')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Row(
           children: [
-            SizedBox(
-                width:
-                    8.0), // Beri sedikit jarak dari tombol back ke heading "Materi"
+            SizedBox(width: 8.0),
             Text(
               'Materi',
-              textAlign: TextAlign.start, // Menjadikan teks "Materi" ke kiri
+              textAlign: TextAlign.start,
             ),
           ],
         ),
@@ -22,11 +52,7 @@ class MateriPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Tahapan // Menandai langkah pertama sebagai aktif
-            SizedBox(
-                height:
-                    16.0), // Beri sedikit jarak dari tahapan ke judul materi
-            // Judul Materi
+            SizedBox(height: 16.0),
             Text(
               'Judul Materi',
               style: TextStyle(
@@ -37,6 +63,7 @@ class MateriPage extends StatelessWidget {
             ),
             SizedBox(height: 8.0),
             TextFormField(
+              controller: judulMateriController,
               decoration: InputDecoration(
                 hintText: 'Contoh: Dasar Manajemen proyek',
                 border: OutlineInputBorder(
@@ -52,7 +79,6 @@ class MateriPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16.0),
-            // Mata Kuliah
             Text(
               'Mata Kuliah',
               style: TextStyle(
@@ -63,6 +89,7 @@ class MateriPage extends StatelessWidget {
             ),
             SizedBox(height: 4.0),
             TextFormField(
+              controller: matkulController,
               decoration: InputDecoration(
                 hintText: 'Contoh: Proyek 1',
                 border: OutlineInputBorder(
@@ -78,7 +105,6 @@ class MateriPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16.0),
-            // Deskripsi
             Text(
               'Deskripsi',
               style: TextStyle(
@@ -89,6 +115,7 @@ class MateriPage extends StatelessWidget {
             ),
             SizedBox(height: 4.0),
             TextFormField(
+              controller: deskripsiController,
               maxLines: 5,
               decoration: InputDecoration(
                 hintText: 'Masukkan deskripsi materi di sini',
@@ -105,7 +132,6 @@ class MateriPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16.0),
-            // Expanded untuk tombol Lanjut
             Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
@@ -113,15 +139,10 @@ class MateriPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Aksi saat tombol "Lanjut" ditekan
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => ScreenTwo()),
-                      // );
+                      _submitForm(context);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(
-                          0xFF3158DA), // Warna latar belakang tombol (3158DA)
+                      backgroundColor: Color(0xFF3158DA),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -130,7 +151,7 @@ class MateriPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16.0,
                           fontFamily: 'Sora',
-                          color: Colors.white, // Warna teks putih
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -144,4 +165,3 @@ class MateriPage extends StatelessWidget {
     );
   }
 }
-

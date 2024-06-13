@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pngajar/homepageadmin.dart';
 
 class SuccessPage extends StatelessWidget {
   @override
@@ -10,7 +11,10 @@ class SuccessPage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePageAdmin()),
+            );
           },
         ),
         title: Text(
@@ -27,7 +31,9 @@ class SuccessPage extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Padding(
-                padding: const EdgeInsets.only(top: 10.0), // Adjust padding to move content down and to the right
+                padding: const EdgeInsets.only(
+                    top:
+                        10.0), // Adjust padding to move content down and to the right
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -35,7 +41,8 @@ class SuccessPage extends StatelessWidget {
                     SizedBox(height: 20),
                     Text(
                       'Sukses',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
                     Text(
